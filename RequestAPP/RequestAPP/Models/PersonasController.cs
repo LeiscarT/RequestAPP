@@ -5,27 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RequestAPP.Models;
 
-namespace RequestAPP.Controllers
+namespace RequestAPP.Models
 {
-    public class SolicitudController : Controller
+    public class PersonasController : Controller
     {
         private readonly RequestContext _context;
 
-        public SolicitudController(RequestContext context)
+        public PersonasController(RequestContext context)
         {
             _context = context;
         }
 
-        // GET: Solicitud
+        // GET: Personas
         public async Task<IActionResult> Index()
         {
-            var requestContext = _context.Solicitud.Include(s => s.persona);
-            return View(await requestContext.ToListAsync());
+            return View(await _context.Persona.ToListAsync());
         }
 
-        // GET: Solicitud/Details/5
+        // GET: Personas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +31,39 @@ namespace RequestAPP.Controllers
                 return NotFound();
             }
 
-            var solicitud = await _context.Solicitud
-                .Include(s => s.persona)
+            var persona = await _context.Persona
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (solicitud == null)
+            if (persona == null)
             {
                 return NotFound();
             }
 
-            return View(solicitud);
+            return View(persona);
         }
 
-        // GET: Solicitud/Create
+        // GET: Personas/Create
         public IActionResult Create()
         {
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido");
             return View();
         }
 
-        // POST: Solicitud/Create
+        // POST: Personas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonaId,FechaDeCreacion")] Solicitud solicitud)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Fecha_Nacimiento,Pasaporte,Direccion")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(solicitud);
+                _context.Add(persona);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
-            return View(solicitud);
+            return View(persona);
         }
 
-        // GET: Solicitud/Edit/5
+        // GET: Personas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +71,22 @@ namespace RequestAPP.Controllers
                 return NotFound();
             }
 
-            var solicitud = await _context.Solicitud.FindAsync(id);
-            if (solicitud == null)
+            var persona = await _context.Persona.FindAsync(id);
+            if (persona == null)
             {
                 return NotFound();
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
-            return View(solicitud);
+            return View(persona);
         }
 
-        // POST: Solicitud/Edit/5
+        // POST: Personas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonaId,FechaDeCreacion")] Solicitud solicitud)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Fecha_Nacimiento,Pasaporte,Direccion")] Persona persona)
         {
-            if (id != solicitud.Id)
+            if (id != persona.Id)
             {
                 return NotFound();
             }
@@ -101,12 +95,12 @@ namespace RequestAPP.Controllers
             {
                 try
                 {
-                    _context.Update(solicitud);
+                    _context.Update(persona);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SolicitudExists(solicitud.Id))
+                    if (!PersonaExists(persona.Id))
                     {
                         return NotFound();
                     }
@@ -117,11 +111,10 @@ namespace RequestAPP.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
-            return View(solicitud);
+            return View(persona);
         }
 
-        // GET: Solicitud/Delete/5
+        // GET: Personas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +122,30 @@ namespace RequestAPP.Controllers
                 return NotFound();
             }
 
-            var solicitud = await _context.Solicitud
-                .Include(s => s.persona)
+            var persona = await _context.Persona
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (solicitud == null)
+            if (persona == null)
             {
                 return NotFound();
             }
 
-            return View(solicitud);
+            return View(persona);
         }
 
-        // POST: Solicitud/Delete/5
+        // POST: Personas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var solicitud = await _context.Solicitud.FindAsync(id);
-            _context.Solicitud.Remove(solicitud);
+            var persona = await _context.Persona.FindAsync(id);
+            _context.Persona.Remove(persona);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SolicitudExists(int id)
+        private bool PersonaExists(int id)
         {
-            return _context.Solicitud.Any(e => e.Id == id);
+            return _context.Persona.Any(e => e.Id == id);
         }
     }
 }

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RequestAPP.Models.Persona>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Fecha de nacimiento
+            </th>
+            <th>
+                Pasaporte
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Nombre
+                </td>
+                <td>
+                    @item.Apellido
+                </td>
+                <td>
+                    @item.Fecha_Nacimiento
+                </td>
+                <td>
+                    @item.Pasaporte
+                </td>
+                <td>
+                    @item.Direccion
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-outline-secondary btn-sm"asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a class="btn btn-outline-danger btn-sm"asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+     
+    </tbody>
+
+</table>
+
+
+<p>
+    <a class="btn btn-outline-success" asp-action="Create" >Crear persona</a>
+</p>
+
