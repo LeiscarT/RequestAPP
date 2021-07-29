@@ -144,3 +144,13 @@ C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\bin\De
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Create.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Delete.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Details.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Edit.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Index.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Create.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Delete.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Details.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Edit.cshtml.g.cs
+C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Index.cshtml.g.cs

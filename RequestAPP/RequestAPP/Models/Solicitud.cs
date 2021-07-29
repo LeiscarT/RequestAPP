@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RequestAPP.Models
 {
-  
+
     public class Solicitud
     {
         [Key]
@@ -19,6 +19,12 @@ namespace RequestAPP.Models
         public Persona persona { get; set; }
         public Estado estado { get; set; }
         public DateTimeOffset FechaDeCreacion { get; set; }
+
+
+        public Solicitud(){
+            FechaDeCreacion = FechaDeCreacion.UtcDateTime;
+        
+        }
 
     }
 }
