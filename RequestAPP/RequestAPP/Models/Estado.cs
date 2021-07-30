@@ -12,11 +12,13 @@ namespace RequestAPP.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public enum Estados
-        {
-            Abiertas,
-            Aprobadas,
-            Canceladas
-        }
+        
+      //  public string Estado_Solicitud { get; set; }
+
+        public string Estado_Solicitud { get; set; }
+
+      //  public ICollection<Solicitud> Solicitudes { get; set; }
+
+
     }
 }

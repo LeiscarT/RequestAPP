@@ -47,24 +47,35 @@ namespace RequestAPP.Controllers
         // GET: Solicitud/Create
         public IActionResult Create()
         {
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido");
+            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre");
+            ViewData["estado"] = new SelectList(_context.Estado, "Id", "Estado_Solicitud");
             return View();
         }
 
         // POST: Solicitud/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonaId,FechaDeCreacion")] Solicitud solicitud)
+        public async Task<IActionResult> Create([Bind("Id,PersonaId,FechaDeCreacion,EstadoId")] Solicitud solicitud)
         {
+            Estado estado = new Estado();
+            solicitud.FechaDeCreacion = DateTimeOffset.UtcNow;
+           if(solicitud.EstadoId == 0)
+            {
+                estado.Estado_Solicitud = "Abierta";
+            }
+          
+           
+            
             if (ModelState.IsValid)
             {
+                
                 _context.Add(solicitud);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
+            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre", solicitud.PersonaId);
+            ViewData["estado"] = new SelectList(_context.Estado, "Id", "Estado_Solicitud", solicitud.EstadoId);
             return View(solicitud);
         }
 
@@ -81,13 +92,13 @@ namespace RequestAPP.Controllers
             {
                 return NotFound();
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
+            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre", solicitud.PersonaId);
+            ViewData["estado"] = new SelectList(_context.Estado, "Id", "Estado_Solicitud", solicitud.estado);
             return View(solicitud);
         }
 
         // POST: Solicitud/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,PersonaId,FechaDeCreacion")] Solicitud solicitud)
@@ -117,7 +128,7 @@ namespace RequestAPP.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Apellido", solicitud.PersonaId);
+            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre", solicitud.PersonaId);
             return View(solicitud);
         }
 

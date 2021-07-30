@@ -12,12 +12,16 @@ namespace RequestAPP.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+
+                    Estado_Solicitud = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Estado", x => x.Id);
                 });
+
+          
 
             migrationBuilder.CreateTable(
                 name: "Persona",
@@ -43,18 +47,18 @@ namespace RequestAPP.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PersonaId = table.Column<int>(type: "int", nullable: false),
-                    estadoId = table.Column<int>(type: "int", nullable: true),
+                    EstadoId = table.Column<int>(type: "int", nullable: false),
                     FechaDeCreacion = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Solicitud", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Solicitud_Estado_estadoId",
-                        column: x => x.estadoId,
-                        principalTable: "Estado",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    //table.ForeignKey(
+                    //    name: "FK_Solicitud_Estado_EstadoId",
+                    //    column: x => x.EstadoId,
+                    //    principalTable: "Estado",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Solicitud_Persona_PersonaId",
                         column: x => x.PersonaId,
@@ -63,17 +67,21 @@ namespace RequestAPP.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Solicitud_estadoId",
-                table: "Solicitud",
-                column: "estadoId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Solicitud_EstadoId",
+            //    table: "Solicitud",
+            //    column: "EstadoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Solicitud_PersonaId",
                 table: "Solicitud",
                 column: "PersonaId");
-        }
 
+            migrationBuilder.Sql(@"insert into Estado values ('Abiertas'),('Aprobadas'), ('Canceladas')");
+         
+
+        }
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

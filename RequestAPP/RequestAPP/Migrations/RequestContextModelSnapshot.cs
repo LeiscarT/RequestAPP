@@ -96,12 +96,17 @@ namespace RequestAPP.Migrations
                         .IsRequired();
 
                     b.HasOne("RequestAPP.Models.Estado", "estado")
-                        .WithMany()
+                        .WithMany("Solicitudes")
                         .HasForeignKey("estadoId");
 
                     b.Navigation("estado");
 
                     b.Navigation("persona");
+                });
+
+            modelBuilder.Entity("RequestAPP.Models.Estado", b =>
+                {
+                    b.Navigation("Solicitudes");
                 });
 
             modelBuilder.Entity("RequestAPP.Models.Persona", b =>
