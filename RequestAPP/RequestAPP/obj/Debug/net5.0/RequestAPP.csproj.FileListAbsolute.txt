@@ -151,6 +151,5 @@ C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\De
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Personas\Index.cshtml.g.cs
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Create.cshtml.g.cs
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Delete.cshtml.g.cs
-C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Details.cshtml.g.cs
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Edit.cshtml.g.cs
 C:\Users\Leiscar Trinidad\Documents\.Net\RequestAPP\RequestAPP\RequestAPP\obj\Debug\net5.0\Razor\Views\Solicitud\Index.cshtml.g.cs

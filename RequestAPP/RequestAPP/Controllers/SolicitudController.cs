@@ -60,10 +60,7 @@ namespace RequestAPP.Controllers
         {
             Estado estado = new Estado();
             solicitud.FechaDeCreacion = DateTimeOffset.UtcNow;
-           if(solicitud.EstadoId == 0)
-            {
-                estado.Estado_Solicitud = "Abierta";
-            }
+          
           
            
             
@@ -101,7 +98,7 @@ namespace RequestAPP.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonaId,FechaDeCreacion")] Solicitud solicitud)
+        public async Task<IActionResult> Edit(int id, Solicitud solicitud)
         {
             if (id != solicitud.Id)
             {
@@ -112,7 +109,8 @@ namespace RequestAPP.Controllers
             {
                 try
                 {
-                    _context.Update(solicitud);
+                    _context.Entry(solicitud);
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -126,9 +124,10 @@ namespace RequestAPP.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre", solicitud.PersonaId);
+           // ViewData["PersonaId"] = new SelectList(_context.Persona, "Id", "Nombre", solicitud.PersonaId);
+            ViewData["estado"] = new SelectList(_context.Persona, "Id", "Estado_Solicitud", solicitud.EstadoId);
             return View(solicitud);
         }
 
