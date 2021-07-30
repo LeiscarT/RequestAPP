@@ -15,6 +15,7 @@ namespace RequestAPP.Models
         public int Id { get; set; }
 
         //foreign Key
+        [ForeignKey("Persona")]
         public int PersonaId { get; set; }
         public Persona persona { get; set; }
 

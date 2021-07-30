@@ -9,6 +9,10 @@
 <p>
     <a asp-action="Create">Nueva solicitud</a>
 </p>
+
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -16,7 +20,7 @@
                 Personas
             </th>
             <th>
-               Fecha de creacion
+                Fecha de creacion
             </th>
             <th>
                 Estado de solicitud
@@ -25,36 +29,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.persona.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaDeCreacion)
-            </td>
+        @foreach (var item in Model)
+        {
+       
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.persona.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaDeCreacion)
+                </td>
 
-            @if (item.EstadoId == 0)
-            {
-                <td>Abierta</td>
-            }
+                @if (item.EstadoId == 0)
+                {
+                    <td>Abierta</td>
+                }
 
-            @if (item.EstadoId == 1)
-            {
-                <td>Aprobada</td>
-            }
+                @if (item.EstadoId == 1)
+                {
+                    <td>Aprobada</td>
+                }
 
-            @if (item.EstadoId == 2)
-            {
-                <td>Cancelada</td>
-            }
+                @if (item.EstadoId == 2)
+                {
+                    <td>Cancelada</td>
+                }
 
-            <td>
-                <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar estado de solicitud</a> |
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar solicitud</a>
+                </td>
+            </tr>
+        }
+
     </tbody>
 </table>
