@@ -4,23 +4,28 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Solicitud</h4>
+<h4 class="text-center">Crear Solicitud</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="PersonaId" class="control-label"></label>
-                <select asp-for="PersonaId" class ="form-control" asp-items="ViewBag.PersonaId"></select>
+                <label class="control-label">Persona:</label>
+                <select asp-for="PersonaId" class="form-control" asp-items="ViewBag.PersonaId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="FechaDeCreacion" class="control-label"></label>
-                <input asp-for="FechaDeCreacion" class="form-control" />
+                <input asp-for="FechaDeCreacion" class="form-control" disabled />
                 <span asp-validation-for="FechaDeCreacion" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label class="control-label">estado:</label>
+                <select asp-for="estado" class="form-control" asp-items="ViewBag.estado"></select>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
